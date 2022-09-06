@@ -13,6 +13,19 @@ class _ScrollableListExampleState extends State<ScrollableListExample> {
   final ItemPositionsListener itemPositionsListener =
       ItemPositionsListener.create();
 
+   Widget myWidget = Wrap(
+    direction: Axis.vertical,
+   spacing: 10,
+    runSpacing: 10,
+    children: [
+      Container(
+        width: 200,height: 200,color: Colors.red,),
+      Container(width: 300,height: 400,color: Colors.red,),
+      Container(width: 100,height: 50,color: Colors.red,),
+      Container(width: 200,height: 50,color: Colors.red,)
+    ],
+  );
+
   @override
   void initState() {
     itemPositionsListener.itemPositions.addListener(() {
@@ -29,12 +42,7 @@ class _ScrollableListExampleState extends State<ScrollableListExample> {
       appBar: AppBar(
         title: const Text("Package"),
       ),
-      body: ScrollablePositionedList.builder(
-        itemCount: 500,
-        itemBuilder: (context, index) => buildMyItem(1, index),
-        itemScrollController: itemScrollController,
-        itemPositionsListener: itemPositionsListener,
-      ),
+      body: myWidget,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.red,
         onPressed: () {
